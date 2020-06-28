@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test File</title>
+    <script src="{{url_for('static',filename='jquery.js')}}"></script>
+</head>
+<body>
+<form id="upload-file" method="post" enctype="multipart/form-data">
+
+    <input type="file" id="file_input" name="file">
+    <button type="submit" id="btn">submit</button>
+</form>
+<script>
+$(document).ready(function(){
+
+$("btn").on("click",function(){
+var form_data = new FormData($('#upload-file'));
+$.ajax(
+{
+    type: 'POST',
+    url: '/upload',
+    data: form_data,
+    success: function(data){
+    console.log(data);
+    }
+}
+
+);
+});
+
+});
+</script>
+</body>
+
+</html>
