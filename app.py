@@ -2,12 +2,13 @@ from flask import Flask,render_template,make_response,url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify,request
 import os
-from flask_cors import CORS
+from flask_cors import CORS,cross_origin
 app = Flask(__name__)
 CORS(app)
-UploadFolder = 'C:\\Users\\NITESH\Documents\\flaskapps\\anmol-flask\\static'
+UploadFolder = '/home/ubuntu/sketch_backend/static/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['UPLOAD_FOLDER'] =UploadFolder
+app.config['CORS_HEADERS'] = 'Content-Type'
 db = SQLAlchemy(app)
 
 
@@ -30,6 +31,7 @@ class Card(db.Model):
 
 
 @app.route('/api',methods= ['GET'])
+@cross_origin()
 def get_info_card():
     n=request.args.get('n')
     count = Card.query.count()
@@ -46,7 +48,9 @@ def get_info_card():
         res.append(d[i].serialize())
         i=i+1
     dic={'code':200,'result':res}
-    return jsonify(dic)
+    response =jsonify(dic)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/api/upload',methods=['POST'])
 def post_info_card():
@@ -60,20 +64,7 @@ def post_info_card():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         db.session.add(c)
         db.session.commit()
-    return redirect("http://localhost:3000/index.html")
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return redirect("https://www.flyploader.live/media/files/index_VP2zbo2.html")
 
 
 
