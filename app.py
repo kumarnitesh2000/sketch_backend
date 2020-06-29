@@ -2,14 +2,16 @@ from flask import Flask,render_template,make_response,url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify,request
 import os
-from flask_cors import CORS,cross_origin
+from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
-UploadFolder = '/home/ubuntu/sketch_backend/static/'
+link = os.environ['link']
+UploadFolder = '/project/static/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-app.config['UPLOAD_FOLDER'] =UploadFolder
-app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['UPLOAD_FOLDER']=UploadFolder
 db = SQLAlchemy(app)
+
+
 
 
 class Card(db.Model):
@@ -31,7 +33,6 @@ class Card(db.Model):
 
 
 @app.route('/api',methods= ['GET'])
-@cross_origin()
 def get_info_card():
     n=request.args.get('n')
     count = Card.query.count()
@@ -64,8 +65,10 @@ def post_info_card():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         db.session.add(c)
         db.session.commit()
-    return redirect("https://www.flyploader.live/media/files/index_VP2zbo2.html")
-
+    if link:
+	return redirect(link)
+    else:
+	return redirect("http://localhost:3000/index.html")
 
 
 #testing purpose ka liya tha
@@ -73,10 +76,10 @@ def post_info_card():
 @app.route('/upload',methods=['GET','POST'])
 def upload():
     if request.method=='POST':
-         res=make_response(jsonify({"msg":f"tatti uploaded"}),200)
+         res=make_response(jsonify({"msg":f"uploaded"}),200)
          return res
-
-
+	
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
+
