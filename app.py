@@ -32,7 +32,7 @@ class Card(db.Model):
         return f'{self.id} -> {self.title}'
 
 
-@app.route('/api',methods= ['GET'])
+@app.route('/api',methods= ['GET','POST'])
 def get_info_card():
     n=request.args.get('n')
     count = Card.query.count()
@@ -80,7 +80,7 @@ def upload():
          return res
     else:
         if link:
-            return jsonify({"linkis":link})
+            return jsonify({"env link is":link})
         else:
             return jsonify({'msg':"no env var."})
 	
