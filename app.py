@@ -66,9 +66,9 @@ def post_info_card():
         db.session.add(c)
         db.session.commit()
     if link:
-	return redirect(link)
+      return redirect(link)
     else:
-	return redirect("http://localhost:3000/index.html")
+      return redirect("http://localhost:3000/index.html")
 
 
 #testing purpose ka liya tha
