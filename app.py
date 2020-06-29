@@ -78,8 +78,12 @@ def upload():
     if request.method=='POST':
          res=make_response(jsonify({"msg":f"uploaded"}),200)
          return res
+    else:
+        if link:
+            return jsonify({"linkis":link})
+        else:
+            return jsonify({'msg':"no env var."})
 	
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0',port=5000,debug=True)
-
+    app.run(host='0.0.0.0',port=5000,debug=Tru
