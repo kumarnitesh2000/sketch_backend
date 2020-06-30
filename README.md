@@ -13,3 +13,11 @@ In command we use volume as well to edit and make changes in the code .
 
 
 backend is running AT https://sketchapi.me/api
+
+at this link is returning the json content and there is a field of image link so to see that image you can visit :
+
+https://sketchapi.me/static/[IMAGE_LINK]
+example :
+https://sketchapi.me/default.jpeg
+
+
