@@ -2,6 +2,7 @@ from flask import Flask,render_template,make_response,url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify,request
 import os
+import random
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
@@ -77,7 +78,9 @@ def post_info_card():
         head = request.form['head']
         title = request.form['title']
         image = file.filename
-        c = Card(id=int(Card.query.count())+1, head=head, title=title,image=str(image))
+        couunt1=int(Card.query.count())+1
+        r=random.randint(couunt1*2,couunt1*3)
+        c = Card(id=int(r), head=head, title=title,image=str(image))
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         db.session.add(c)
         db.session.commit()
