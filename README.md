@@ -22,12 +22,8 @@ https://sketchapi.me/static/default.jpeg
 
 You Can use that api : for testing purpose .
 
-Frontend is AT : 
+Frontend is AT :  https://www.flyploader.live/media/files/index_VP2zbo2.html
 
-
-                 https://www.flyploader.live/media/files/index_VP2zbo2.html
-
-		 For the Demo purpose : 
-
-		 ksksksklalaklkal
+		
+		 
 
