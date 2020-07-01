@@ -5,7 +5,10 @@ import os
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
-link = os.environ['link']
+try:
+    link = os.environ['link']
+except:
+    link = "https://flyploader.live"
 UploadFolder = '/project/static/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['UPLOAD_FOLDER']=UploadFolder
@@ -31,6 +34,19 @@ class Card(db.Model):
     def __repr__(self):
         return f'{self.id} -> {self.title}'
 
+
+
+@app.route('/admin',methods=['GET','POST'])
+def admin_panel():
+    c = Card.query.all()
+    return render_template("admin.html",card=c)
+
+@app.route('/delete/<int:id>', methods=['GET','POST'])
+def remove(id):
+    c = Card.query.get(id)
+    db.session.delete(c)
+    db.session.commit()
+    return redirect(url_for('admin_panel'))
 
 @app.route('/api',methods= ['GET','POST'])
 def get_info_card():
