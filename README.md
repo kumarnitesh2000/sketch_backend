@@ -18,7 +18,7 @@ at this link is returning the json content and there is a field of image link so
 
 https://sketchapi.me/static/[IMAGE_LINK]
 example :
-https://sketchapi.me/default.jpeg
+https://sketchapi.me/static/default.jpeg
 
 You Can use that api : for testing purpose .
 
