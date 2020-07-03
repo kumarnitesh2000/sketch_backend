@@ -10,6 +10,7 @@ this is simple backend written for uploading sketches that can be used by websit
 Now link is the enviroment variable in this after the POST request function will return to the link page .
 
 In command we use volume as well to edit and make changes in the code .
+its not the best practice but you can do.
 
 
 backend is running AT https://sketchapi.me/api
@@ -25,5 +26,6 @@ You Can use that api : for testing purpose .
 Frontend is AT :  https://www.flyploader.live/media/files/index_VP2zbo2.html
 
 		
-		Jenkins Pipeline Added :  
+		Jenkins Pipeline Added :
+		
 
