@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-python-service
+  name: sketch-service
 spec:
   selector:
     app: hello-python
   ports:
   - protocol: "TCP"
-    port: 6000
+    port: 7000
     targetPort: 5000
   type: LoadBalancer
 
@@ -15,21 +15,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-python
+  name: sketch-python
 spec:
   selector:
     matchLabels:
-      app: hello-python
-  replicas: 1
+      app: sketch-python
+  replicas: 4
   template:
     metadata:
       labels:
-        app: hello-python
+        app: sketch-python
     spec:
       containers:
-      - name: hello-python
-        image: kumarnitesh2000/flaskapp
-        imagePullPolicy: IfNotPresent
+      - name: sketch-python
+        image: kumarnitesh2000/sketch_backend:yahh
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
 
