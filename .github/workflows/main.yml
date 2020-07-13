@@ -21,8 +21,11 @@ jobs:
         echo $git_branch
         echo $git_hash   
     - name: Build DockerImage
+      env: 
+        hash: $(git rev-parse --short "$GITHUB_SHA")
       run: |
         docker build -t sketch .
+        docker tag sketch kumarnitesh2000/sketch_backend:$hash
     - name: Push DockerImage
       env: 
         hash: $(git rev-parse --short "$GITHUB_SHA") 
