@@ -13,7 +13,7 @@ jobs:
         USER: ${{ secrets.DOCKERHUB_USER }}
         PASSD: ${{ secrets.DOCKERHUB_PASSWD }}
       run: |
-        docker login -u $USER -p $PASSWD 
+        winpty docker login -u $USER -p $PASSWD 
     - name: PrintCommit
       run: |
         git_hash=$(git rev-parse --short "$GITHUB_SHA")
