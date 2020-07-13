@@ -24,7 +24,7 @@ jobs:
       env: 
         hash: $(git rev-parse --short "$GITHUB_SHA")
       run: |
-        docker build -t sketch .
+        docker build -t kumarnitesh2000/sketch_backend:$(git rev-parse --short "$GITHUB_SHA") .
         echo $hash
     - name: Push DockerImage
       env: 
