@@ -10,6 +10,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build DockerImage
       run: |
-        docker built -t kumarnitesh2000/sketch_backned:1.0 .
+        docker build -t kumarnitesh2000/sketch_backned:1.0 .
         
         
