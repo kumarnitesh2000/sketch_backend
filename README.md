@@ -8,24 +8,7 @@ this is simple backend written for uploading sketches that can be used by websit
 		docker run -d -p 5000:5000 -e link=http://flyploader.live -v $PWD:/project/ kumarnitesh2000/sketch_backend:initial
 **
 Now link is the enviroment variable in this after the POST request function will return to the link page .
-
 In command we use volume as well to edit and make changes in the code .
 its not the best practice but you can do.
-
-
-backend is running AT https://sketchapi.me/api
-
-at this link is returning the json content and there is a field of image link so to see that image you can visit :
-
-https://sketchapi.me/static/[IMAGE_LINK]
-example :
-https://sketchapi.me/static/default.jpeg
-
-You Can use that api : for testing purpose .
-
-Frontend is AT :  https://www.flyploader.live/media/files/index_VP2zbo2.html
-
-		
-		Jenkins Pipeline Added :
 		
 
