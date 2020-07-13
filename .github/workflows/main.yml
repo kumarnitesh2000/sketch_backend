@@ -10,8 +10,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: DockerLogin
       env:
-        USER: ${{ secrets.DOCKER_USER }}
-        PASSD: ${{ secrets.DOCKER_PASSWD }}
+        USER: ${{ secrets.DOCKERHUB_USER }}
+        PASSD: ${{ secrets.DOCKERHUB_PASSWD }}
       run: |
         docker login -u $USER -p $PASSWD 
     - name: PrintCommit
