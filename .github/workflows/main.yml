@@ -30,6 +30,5 @@ jobs:
       env: 
         hash: $(git rev-parse --short "$GITHUB_SHA") 
       run: |
-        docker tag sketch kumarnitesh2000/sketch_backend:$hash
         docker push kumarnitesh2000/sketch_backend:$hash  
         
