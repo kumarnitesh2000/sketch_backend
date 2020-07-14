@@ -37,7 +37,7 @@ class Card(db.Model):
 
 @app.route('/',methods=['GET'])
 def pipeline():
-    return "<h1>PipeLine Created ! Hurray .</h1>"
+    return "<h1>PipeLine Created ! Hurray .</h1><br><h2>Argo Cd Auto Refreshing.</h2>"
 
 @app.route('/admin',methods=['GET','POST'])
 def admin_panel():
