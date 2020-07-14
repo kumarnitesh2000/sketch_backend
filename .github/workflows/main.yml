@@ -26,7 +26,7 @@ jobs:
         git diff
         ls
         git commit -m "Add changes" -a
-      
+        git remote -v
         
          
     - name: DockerLogin
