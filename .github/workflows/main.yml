@@ -23,10 +23,12 @@ jobs:
         cd ..
         git config --global user.email "kumarnitesh2000.nk@gmail.com"
         git config --global user.name "kumarnitesh2000"
+        git remote set-url origin https://x-access-token:${{ secrets.GH }}@github.com/kumarnitesh2000/kubManifest.git
         git diff
         ls
         git commit -m "Add changes" -a
         git remote -v
+        git push
         
          
     - name: DockerLogin
