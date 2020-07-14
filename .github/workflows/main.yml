@@ -12,25 +12,7 @@ jobs:
     - uses: BSFishy/pip-action@v1
       with:
         packages: |
-          pyyaml
-    
-    - name: GitClonePush
-      run: |
-        git clone https://github.com/kumarnitesh2000/kubManifest.git
-        cd kubManifest/sketch-app/deployment
-        python lol.py $(git rev-parse --short "$GITHUB_SHA")
-        cd ..
-        cd ..
-        git config --global user.email "kumarnitesh2000.nk@gmail.com"
-        git config --global user.name "kumarnitesh2000"
-        git remote set-url origin https://x-access-token:${{ secrets.GH }}@github.com/kumarnitesh2000/kubManifest.git
-        git diff
-        ls
-        git commit -m "Add changes" -a
-        git remote -v
-        git push
-        
-         
+          pyyaml       
     - name: DockerLogin
       env:
         USER: ${{ secrets.DOCERHUB_USER }}
@@ -54,4 +36,18 @@ jobs:
         hash: $(git rev-parse --short "$GITHUB_SHA") 
       run: |
         docker push kumarnitesh2000/sketch_backend:$(git rev-parse --short "$GITHUB_SHA")  
-        
+    - name: GitClonePush
+      run: |
+        git clone https://github.com/kumarnitesh2000/kubManifest.git
+        cd kubManifest/sketch-app/deployment
+        python lol.py $(git rev-parse --short "$GITHUB_SHA")
+        cd ..
+        cd ..
+        git config --global user.email "kumarnitesh2000.nk@gmail.com"
+        git config --global user.name "kumarnitesh2000"
+        git remote set-url origin https://x-access-token:${{ secrets.GH }}@github.com/kumarnitesh2000/kubManifest.git
+        git diff
+        ls
+        git commit -m "Add changes" -a
+        git remote -v
+        git push   
