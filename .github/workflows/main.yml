@@ -27,7 +27,7 @@ jobs:
         ls
         git commit -m "Add changes" -a
         git remote -v
-        git push
+        
          
     - name: DockerLogin
       env:
