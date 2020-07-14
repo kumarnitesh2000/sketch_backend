@@ -14,11 +14,18 @@ jobs:
         packages: |
           pyyaml
     
-    - name: GitClone
+    - name: GitClonePush
       run: |
         git clone https://github.com/kumarnitesh2000/kubManifest.git
         cd kubManifest/sketch-app/deployment
-        python lol.py $(git rev-parse --short "$GITHUB_SHA") 
+        python lol.py $(git rev-parse --short "$GITHUB_SHA")
+        cd /kubManifest
+        git config --local user.email "kumarnitesh2000.nk@gmail.com"
+        git config --local user.name "kumarnitesh2000"
+        git diff
+        git commit -m "Add changes" -a
+        
+         
     - name: DockerLogin
       env:
         USER: ${{ secrets.DOCERHUB_USER }}
