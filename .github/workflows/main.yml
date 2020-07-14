@@ -25,6 +25,7 @@ jobs:
         git config --local user.name "kumarnitesh2000"
         git diff
         git commit -m "Add changes" -a
+        git push -u -f origin master
         
          
     - name: DockerLogin
