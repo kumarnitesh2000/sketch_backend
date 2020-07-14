@@ -8,6 +8,10 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - name: GitClone
+      run: |
+        git clone https://github.com/kumarnitesh2000/kubManifest.git
+        ls 
     - name: DockerLogin
       env:
         USER: ${{ secrets.DOCERHUB_USER }}
