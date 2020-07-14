@@ -21,11 +21,12 @@ jobs:
         python lol.py $(git rev-parse --short "$GITHUB_SHA")
         cd ..
         cd ..
-        git config --local user.email "kumarnitesh2000.nk@gmail.com"
-        git config --local user.name "kumarnitesh2000"
+        git config --global user.email "kumarnitesh2000.nk@gmail.com"
+        git config --global user.name "kumarnitesh2000"
         git diff
+        ls
         git commit -m "Add changes" -a
-        git push -u -f origin master
+      
         
          
     - name: DockerLogin
