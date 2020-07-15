@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify,request
 import os
 import random
+import redis
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
@@ -37,7 +38,14 @@ class Card(db.Model):
 
 @app.route('/',methods=['GET'])
 def pipeline():
-    return "<h1>PipeLine Created ! Hurray .</h1><br><h2>Argo Cd Auto Refreshing.</h2>"
+    try:
+        r = redis.Redis()
+        name = r.get('name')
+        name = str(name)
+    except:
+        pass
+
+    return f"<h1>PipeLine Created ! Hurray .</h1><br>Created By -><h2>{name}</h2>"
 
 @app.route('/admin',methods=['GET','POST'])
 def admin_panel():
