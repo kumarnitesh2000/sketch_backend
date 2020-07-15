@@ -41,7 +41,8 @@ class Card(db.Model):
 def pipeline():
     try:
         r = redis.Redis()
-        name = r.get('name').decode('utf-8')
+        #name = r.get('name').decode('utf-8')
+        name = "NiteshKumar!"
         count = r.get('count')
         r.incr('count')
         count=count.decode('utf-8')
