@@ -41,7 +41,7 @@ class Card(db.Model):
 def pipeline():
     try:
         r = redis.Redis()
-        #name = r.get('name').decode('utf-8')
+        name2 = r.get('name')
         name = "NiteshKumar!"
         count = r.get('count')
         r.incr('count')
@@ -50,7 +50,7 @@ def pipeline():
         count=9999
         pass
 
-    return f"<h1>PipeLine Created ! Hurray .</h1><br>Created By : <h2>{name}</h2><br><h3>You Visited {count} No. Of Times.</h3>"
+    return f"<h1>PipeLine Created ! Hurray .</h1><br>Created By : <h2>{name}</h2> And {name2}<br><h3>You Visited {count} No. Of Times.</h3>"
 
 @app.route('/admin',methods=['GET','POST'])
 def admin_panel():
