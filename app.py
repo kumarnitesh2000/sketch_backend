@@ -44,6 +44,7 @@ def pipeline():
         count = r.get('count').decode('utf-8')
         count = int(count)+1
     except:
+        count=0
         pass
 
     return f"<h1>PipeLine Created ! Hurray .</h1><br>Created By : <h2>{name}</h2><br><h3>You Visited {count} No. Of Times.</h3>"
