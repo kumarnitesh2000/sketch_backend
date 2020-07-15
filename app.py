@@ -47,8 +47,7 @@ def pipeline():
         r.incr('count')
         count=count.decode('utf-8')
     except RedisError as e:
-        print(e)
-        count=1000
+        count=9999
         pass
 
     return f"<h1>PipeLine Created ! Hurray .</h1><br>Created By : <h2>{name}</h2><br><h3>You Visited {count} No. Of Times.</h3>"
