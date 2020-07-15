@@ -42,9 +42,9 @@ def pipeline():
     try:
         r = redis.Redis()
         name = r.get('name').decode('utf-8')
-        count = r.get('count').decode('utf-8')
-        count = int(count)+1
-        r.set('count',count)
+        count = r.get('count')
+        r.incr('count')
+        
     except RedisError as e:
         print(e)
         count=1000
