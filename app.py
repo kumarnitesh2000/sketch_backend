@@ -4,6 +4,7 @@ from flask import jsonify,request
 import os
 import random
 import redis
+from redis import RedisError
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
@@ -43,8 +44,9 @@ def pipeline():
         name = r.get('name').decode('utf-8')
         count = r.get('count').decode('utf-8')
         count = int(count)+1
-        r.set('count',str(count))
-    except:
+        r.set('count',count)
+    except RedisError as e:
+        print(e)
         count=1000
         pass
 
