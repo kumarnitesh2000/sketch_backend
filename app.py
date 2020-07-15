@@ -43,8 +43,9 @@ def pipeline():
         name = r.get('name').decode('utf-8')
         count = r.get('count').decode('utf-8')
         count = int(count)+1
+        r.set('count',str(count))
     except:
-        count=0
+        count=1000
         pass
 
     return f"<h1>PipeLine Created ! Hurray .</h1><br>Created By : <h2>{name}</h2><br><h3>You Visited {count} No. Of Times.</h3>"
